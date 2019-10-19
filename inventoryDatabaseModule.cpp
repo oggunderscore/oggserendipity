@@ -170,7 +170,7 @@ void executeFind(bookType *book[]) {
 }
 
 
-int lookUpBook(bookType *book[], resultsType *results[]) {
+int lookUpBook(bookType *book[], resultsType *results[]) { 
 	results[0]->amount = 0;
 	string search;
 	cout << "\nSearch: ";
@@ -183,6 +183,9 @@ int lookUpBook(bookType *book[], resultsType *results[]) {
 			cout << "setting " << results[results[x]->amount]->book.getTitle() << " for book " << x << endl;
 			//  setting  for 0
 			cout << "AMOUNT: " << results[results[x]->amount] << endl;
+			
+			//results[results[x].amount].book = book[x]; //Old functional code
+			results[results[x]->amount]->book = book[x]; // CRASH
 			
 			results[results[x]->amount]->setBook(book[x]);
 			//results[results[x]->amount]->book = new bookType(book[x]);
@@ -434,6 +437,7 @@ void editBook(bookType *book[]) {
 						case 'Y':
 						case 'y':
 							validInput = true;
+							break;
 						case 'N':
 						case 'n':
 							validInput = true;
@@ -558,7 +562,7 @@ void inventoryDatabaseModule(bookType *book[]) {
 	bool exitInventoryModule = false;
 	do {
 		char selection;
-		bool validInput, exitExecuteFind = false, exitAddBook = false, exitEditBook = false, exitDeleteBook = false;
+		bool validInput;
 		clear();
 		do {
 			cout << "\t\tSerendipity Booksellers\n\t\tInventory Database\n\n\t\t1. Look up a Book\n\t\t2. Add a Book\n\t\t3. Edit a Book's Record\n\t\t4. Delete a Book\n\t\t5. Return to Main Menu\n\n\t\tPlease type in your input: "; 

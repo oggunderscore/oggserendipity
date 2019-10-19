@@ -50,7 +50,7 @@ string getDate() {
 }
 
 void mainMenu(bookType *book[]) {
-	bool exitMenu;
+	bool exitMenu = false;
 	do {
 		char selection;
 		bool validInput;

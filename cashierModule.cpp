@@ -239,7 +239,7 @@ void cashierModule(bookType *book[]) {
 		if (exitCashier != true) {
 			if (items > 0) {
 				int rounding;
-				float price, subtotal, total = 0, totalSubTotal = 0, totalTax = 0, tax, taxRate = 0.06, quantity;
+				float subtotal, total = 0, totalSubTotal = 0, totalTax = 0, tax, taxRate = 0.06;
 				
 				clear();
 				cout << "Serendipity Booksellers\n\nDate: " << getDate() << "\n\nQty\tISBN\t\tTitle\t\t\t\t\t\t\t\tPrice\tTotal\n-----------------------------------------------------------------------------------------------------------------\n";
