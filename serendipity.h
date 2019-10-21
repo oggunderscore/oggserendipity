@@ -64,7 +64,7 @@ void removeBook(bookType *[], int x);
 void reportModule(bookType *[]);
 void clear();
 void pause();
-int lookUpBook(bookType *[], resultsType *[]);
+int lookUpBook(bookType *[], resultsType []);
 string getDate();
 
 const int DBSIZE = 20;

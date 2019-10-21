@@ -43,8 +43,10 @@
 //--------------------------------------------------------//
 
 struct receiptType {
-	bookType book;
+	string bookTitle, ISBN;
 	int amount, id;
+	double retail;
+	int qty;
 };
 
 int cashierSearch(bookType *book[], int &amount) {
@@ -67,7 +69,7 @@ int cashierSearch(bookType *book[], int &amount) {
 	} while (foundNeg == true);
 	
 	if (amount != 0) {
-		for (int x = 0; x < DBSIZE; x++) {
+		for (int x = 0; x < book[0]->getBookCount(); x++) {
 			size_t found = findCaseInsensitive(book[x]->getTitle(), search, 0);
 			if (found != string::npos) {
 				if (book[x]->getQtyOnHand() < amount) {
@@ -76,7 +78,7 @@ int cashierSearch(bookType *book[], int &amount) {
 					return x;
 				}
 			} else { 
-				for (int x = 0; x < DBSIZE; x++) {
+				for (int x = 0; x < book[0]->getBookCount(); x++) {
 					found = book[x]->getIsbn().find(search);
 					if (found != string::npos) {
 						if (book[x]->getQtyOnHand() < amount) {
@@ -94,31 +96,37 @@ int cashierSearch(bookType *book[], int &amount) {
 	return (-1);
 }
 
-void addToReceipt(bookType *book1, int index1, int amount1, receiptType  *receipts[], int &items) {
+void addToReceipt(bookType *book1, int index1, int amount1, receiptType receipts[], int &items) {
 	if (items == 0) {
-		receipts[0]->book = new bookType(book1);
-		receipts[0]->amount = amount1;
-		receipts[0]->id = index1;
+		receipts[0].bookTitle = book1->getTitle();
+		receipts[0].amount = amount1;
+		receipts[0].id = index1;
+		receipts[0].retail = book1->getRetail();
+		receipts[0].ISBN = book1->getIsbn();
+		receipts[0].qty = book1->getQtyOnHand();
 		items++;
 	} else {
 		bool dupe = false;
 		for (int x = 0; x < items; x++) {
-			if (receipts[x]->book.equals(book1)) {
-				receipts[x]->amount += amount1;
+			if (receipts[x].bookTitle == book1->getTitle()) {
+				receipts[x].amount += amount1;
 				dupe = true;
 			}
 		}
 		if (dupe == false) {
-			receipts[items]->book = new bookType(book1);
-			receipts[items]->amount = amount1;
-			receipts[items]->id = index1;
+			receipts[items].bookTitle = book1->getTitle();
+			receipts[items].amount = amount1;
+			receipts[items].id = index1;
+			receipts[items].retail = book1->getRetail();
+			receipts[items].ISBN = book1->getIsbn();
+			receipts[items].qty = book1->getQtyOnHand();
 			items++;
 		}
 	}
 }
 
 //removed prototype for gatherReq
-void gatherRequests(bookType *book[], receiptType *receipts[], int &items) {
+void gatherRequests(bookType *book[], receiptType receipts[], int &items) {
 	bool exitRequests = false;
 	do {
 		int amount = 0;
@@ -218,7 +226,7 @@ void gatherRequests(bookType *book[], receiptType *receipts[], int &items) {
 
 
 void cashierModule(bookType *book[]) {
-	receiptType *receipts[DBSIZE];
+	receiptType receipts[DBSIZE];
 	int items = 0;
 	bool exitCashier = false;
 	bool validInput;
@@ -246,7 +254,7 @@ void cashierModule(bookType *book[]) {
 				
 				for (int x = 0; x < items; x++) {
 					//Calculate
-					subtotal = receipts[x]->book.getRetail() * receipts[x]->amount * 1.0;
+					subtotal = receipts[x].retail * receipts[x].amount * 1.0;
 					tax = (float) (subtotal * taxRate) * 100.0;
 					rounding = (int) tax;
 					tax = rounding / 100.0;
@@ -254,9 +262,9 @@ void cashierModule(bookType *book[]) {
 					totalTax += tax;
 					total += subtotal + tax;
 					
-					book[receipts[x]->id]->setQtyOnHand(book[receipts[x]->id]->getQtyOnHand() - receipts[x]->amount); //subtract amount from book.
+					book[receipts[x].id]->setQtyOnHand(book[receipts[x].id]->getQtyOnHand() - receipts[x].amount); //subtract amount from book.
 					
-					cout << receipts[x]->amount << "\t" << receipts[x]->book.getIsbn() << "\t" << setw(48) << left << receipts[x]->book.getTitle() << "\t\t" << right << setw(6) << receipts[x]->book.getRetail() << "\t" << right << setw(6) << subtotal << endl;
+					cout << receipts[x].amount << "\t" << receipts[x].ISBN << "\t" << setw(48) << left << receipts[x].bookTitle << "\t\t" << right << setw(6) << receipts[x].retail << "\t" << right << setw(6) << subtotal << endl;
 					
 				}
 
@@ -297,9 +305,9 @@ void cashierModule(bookType *book[]) {
 
 				
 				for (int x = 0; x < items; x++) {
-					if (receipts[x]->book.getQtyOnHand() < receipts[x]->amount) {
-						cout << "NOTE: User requested " << receipts[x]->amount << " out of " <<  receipts[x]->book.getQtyOnHand() << " books available for book: \"" << receipts[x]->book.getTitle() << "\".\nSetting desired amount to Qty in Inventory.\n" << endl;
-						receipts[x]->amount = receipts[x]->book.getQtyOnHand();
+					if (receipts[x].qty < receipts[x].amount) {
+						cout << "NOTE: User requested " << receipts[x].amount << " out of " <<  receipts[x].qty << " books available for book: \"" << receipts[x].bookTitle << "\".\nSetting desired amount to Qty in Inventory.\n" << endl;
+						receipts[x].amount = receipts[x].qty;
 						cout << endl;
 					}
 				}

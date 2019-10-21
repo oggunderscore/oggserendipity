@@ -76,8 +76,8 @@ void executeFind(bookType *book[]) {
 	bool validInput;
 	char selection;
 	
-	resultsType *results[DBSIZE]; //create table of results possible of 20 searches
-	results[0]->amount = 0;
+	resultsType results[DBSIZE];//create table of results possible of 20 searches
+	results[0].amount = 0;
 	
 	while (exitExecuteFind != true) {
 		clear();
@@ -85,7 +85,7 @@ void executeFind(bookType *book[]) {
 		cout << "\t\tSerendipity Booksellers\n\t\tInventory Database\n\n\t\t1. Look up a Book\n\t\t2. Add a Book\n\t\t3. Edit a Book's Record\n\t\t4. Delete a Book\n\t\t5. Return to Main Menu\n\n\t\tPlease type in your input: 1\n";
 		int index = lookUpBook(book, results);
 		if (index >= 0) {
-			for (int x = 0; x < results[0]->amount; x++) {
+			for (int x = 0; x < results[0].amount; x++) {
 				if (exitExecuteFind != true) {
 					validInput = false;
 					do {
@@ -101,12 +101,12 @@ void executeFind(bookType *book[]) {
 							
 							clear();
 							cout << endl;
-							for (int y = 0; y < results[0]->amount; y++) {
+							for (int y = 0; y < results[0].amount; y++) {
 								string selected = "   ";
 								if (x == y) {
 									selected = " > ";
 								}
-								cout << selected << "\"" << results[y]->book.getTitle() << "\"" << endl;
+								cout << selected << "\"" << results[y].bookTitle << "\"" << endl;
 							}
 							
 							
@@ -120,13 +120,13 @@ void executeFind(bookType *book[]) {
 								case 'y':
 									validInput = true;
 									clear();
-									bookInfo(book, results[x]->index);
+									bookInfo(book, results[x].index);
 									exitExecuteFind = true;
 									break;
 								case 'N':
 								case 'n':
 									validInput = true;
-									if (x == results[0]->amount - 1)
+									if (x == results[0].amount - 1)
 										exitExecuteFind = true;
 									break;
 								default:
@@ -170,48 +170,34 @@ void executeFind(bookType *book[]) {
 }
 
 
-int lookUpBook(bookType *book[], resultsType *results[]) { 
-	results[0]->amount = 0;
+int lookUpBook(bookType *book[], resultsType results[]) { 
+	results[0].amount = 0;
 	string search;
 	cout << "\nSearch: ";
 	cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 	getline(cin, search);
+	
+	
 	for (int x = 0; x < book[0]->getBookCount(); x++) {
 		size_t found = findCaseInsensitive(book[x]->getTitle(), search, 0);
 		if (found != string::npos) {
-			cout << "FOUND: " << book[x]->getTitle() << endl;
-			cout << "setting " << results[results[x]->amount]->book.getTitle() << " for book " << x << endl;
-			//  setting  for 0
-			cout << "AMOUNT: " << results[results[x]->amount] << endl;
-			
-			//results[results[x].amount].book = book[x]; //Old functional code
-			results[results[x]->amount]->book = book[x]; // CRASH
-			
-			results[results[x]->amount]->setBook(book[x]);
-			//results[results[x]->amount]->book = new bookType(book[x]);
-			cout << "setbook" << endl;
-			results[results[x]->amount]->index = x;
-			cout << "setindex" << endl;
-			
-			results[x]->amount++;
-			
-			cout << "setamount = " << results[x]->amount << endl;
-			//return x;
-			
+			string title = book[x]->getTitle();
+			results[results[0].amount].bookTitle = title; // CRASH
+			cout << "OOF!" << endl;
+			results[results[0].amount].index = x;
+			results[0].amount += 1;
 		} else { 
 			for (int x = 0; x < book[0]->getBookCount(); x++) {
 				found = book[x]->getIsbn().find(search);
 				if (found != string::npos) {
-					results[results[x]->amount]->book = book[x];
-					results[results[x]->amount]->index = x;
-					results[x]->amount++;
-					//return x;
-					
+					results[results[0].amount].bookTitle = book[x]->getTitle();
+					results[results[0].amount].index = x;
+					results[0].amount += 1;
 				}
 			}
 		}
 	}
-	if (results[0]->amount == 0) {
+	if (results[0].amount == 0) {
 		return (-1);
 	} else {
 		return 0;
@@ -371,8 +357,8 @@ void editBook(bookType *book[]) {
 	
 	
 	
-	resultsType *results[DBSIZE]; //create table of results possible of 20 searches
-	results[0]->amount = 0;
+	resultsType results[DBSIZE]; //create table of results possible of 20 searches
+	results[0].amount = 0;
 	
 	
 	
@@ -383,19 +369,19 @@ void editBook(bookType *book[]) {
 		int index = lookUpBook(book, results);
 		
 		if (index >= 0) {
-			for (int x = 0; x < results[0]->amount; x++) {
+			for (int x = 0; x < results[0].amount; x++) {
 				if (exitEditBook != true) {
 					validInput = false;
 					do {
 						if (validInput != true) {
 							clear();
 							cout << endl;
-							for (int y = 0; y < results[0]->amount; y++) {
+							for (int y = 0; y < results[0].amount; y++) {
 								string selected = "   ";
 								if (x == y) {
 									selected = " > ";
 								}
-								cout << selected << "\"" << results[y]->book.getTitle() << "\"" << endl;
+								cout << selected << "\"" << results[y].bookTitle << "\"" << endl;
 							}
 							
 							
@@ -408,13 +394,13 @@ void editBook(bookType *book[]) {
 								case 'Y':
 								case 'y':
 									validInput = true;
-									editor(book, results[x]->index);
+									editor(book, results[x].index);
 									exitEditBook = true;
 									break;
 								case 'N':
 								case 'n':
 									validInput = true;
-									if (x == results[0]->amount - 1)
+									if (x == results[0].amount - 1)
 										exitEditBook = true;
 									break;
 								default:
@@ -463,8 +449,8 @@ void deleteBook(bookType *book[]) {
 	bool validInput = false;
 	char selection;
 	
-	resultsType *results[DBSIZE]; //create table of results possible of 20 searches
-	results[0]->amount = 0;
+	resultsType results[DBSIZE]; //create table of results possible of 20 searches
+	results[0].amount = 0;
 	
 	
 	while (exitDeleteBook != true) {
@@ -474,19 +460,19 @@ void deleteBook(bookType *book[]) {
 		int index = lookUpBook(book, results);
 		
 		if (index >= 0) {
-			for (int x = 0; x < results[0]->amount; x++) {
+			for (int x = 0; x < results[0].amount; x++) {
 				if (exitDeleteBook != true) {
 					validInput = false;
 					do {
 						if (validInput != true) {
 							clear();
 							cout << endl;
-							for (int y = 0; y < results[0]->amount; y++) {
+							for (int y = 0; y < results[0].amount; y++) {
 								string selected = "   ";
 								if (x == y) {
 									selected = " > ";
 								}
-								cout << selected << "\"" << results[y]->book.getTitle() << "\"" << endl;
+								cout << selected << "\"" << results[y].bookTitle << "\"" << endl;
 							}
 							cout << "\n\nWould you like to delete the selected book? \nN = Next Selection\n\n\t(Y/N): ";
 							cin >> selection;
@@ -494,7 +480,7 @@ void deleteBook(bookType *book[]) {
 								case 'Y':
 								case 'y':
 									validInput = true;
-									removeBook(book, results[x]->index);
+									removeBook(book, results[x].index);
 									cout << "Database: (" << book[0]->getBookCount() << "/" << DBSIZE << ")" << endl;
 									cout << endl;
 									pause();
@@ -503,7 +489,7 @@ void deleteBook(bookType *book[]) {
 								case 'N':
 								case 'n':
 									validInput = true;
-									if (x == results[0]->amount - 1)
+									if (x == results[0].amount - 1)
 										exitDeleteBook = true;
 									break;
 								default:

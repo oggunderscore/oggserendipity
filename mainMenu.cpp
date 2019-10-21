@@ -85,7 +85,7 @@ void mainMenu(bookType *book[]) {
 					break;
 				default:
 					validInput = false;
-					cout << "\nPlease enter a valid selection!";
+					cout << "\nPlease enter a valid selection!" << endl;;
 					break;
 			}
 		} while (validInput != true);

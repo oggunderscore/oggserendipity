@@ -4,13 +4,11 @@
 
 class resultsType {
 	public: 
-		bookType book;
+		string bookTitle, ISBN;
+		double retail;
+		int qty;
 		int index;
 		static int amount;
-		
-		void setBook(bookType book1) {
-			book = book1;
-		}
 		
 };
 
