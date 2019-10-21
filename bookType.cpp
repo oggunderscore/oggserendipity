@@ -149,7 +149,7 @@ void bookType::print() {
 	cout << "Wholesale Cost: " << getWholesale() << endl;
 	cout << "Retail Cost: " << getRetail() << endl;
 	pause();
-	clear();
+	clears();
 }
 
 

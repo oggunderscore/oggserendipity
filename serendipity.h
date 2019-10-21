@@ -14,10 +14,6 @@
 #include <ctype.h>
 #include <algorithm>
 
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_ESC 27
-
 //--------------------------------------------------------//
 // File Name: serendipity.h
 // Project name: Serendipity Ch 9-11
@@ -53,6 +49,8 @@
 
 using namespace std;
 
+//short GetAsyncKeyState(int vKey);
+
 class bookType;
 class resultsType;
 
@@ -62,7 +60,7 @@ void mainMenu(bookType *[]);
 void inventoryDatabaseModule(bookType *[]);
 void removeBook(bookType *[], int x);
 void reportModule(bookType *[]);
-void clear();
+void clears();
 void pause();
 int lookUpBook(bookType *[], resultsType []);
 string getDate();

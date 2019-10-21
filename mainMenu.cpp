@@ -55,24 +55,24 @@ void mainMenu(bookType *book[]) {
 		char selection;
 		bool validInput;
 		do {
-			clear();
+			clears();
 			cout << "\n\t\tSerendipity Book Sellers\n\t\t\tMain Menu\n\n";
 			cout << "\t\t1. Cashier Module\n\t\t2. Inventory Database Module.\n\t\t3. Report Module.\n\t\t4. Exit\n\n\tPlease type in your input: ";
 			cin >> selection;
 			switch(selection) {
 				case '1':
 					validInput = true;
-					clear();
+					clears();
 					cashierModule(book);
 					break;
 				case '2':
 					validInput = true;
-					clear();
+					clears();
 					inventoryDatabaseModule(book);
 					break;
 				case '3':
 					validInput = true;
-					clear();
+					clears();
 					reportModule(book);
 					break;
 				case '4':
@@ -80,7 +80,7 @@ void mainMenu(bookType *book[]) {
 					cout << "Exiting Program..." << endl;
 					exitMenu = true;
 					pause();
-					clear();
+					clears();
 					return;
 					break;
 				default:

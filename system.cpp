@@ -3,6 +3,7 @@
 void pause() {
 	system("cmd.exe /c pause");
 }
-void clear() {
+
+void clears() {
 	system("cmd.exe /c cls");
 }

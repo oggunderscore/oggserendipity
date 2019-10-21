@@ -57,7 +57,7 @@ void bookInfo(bookType *book[], int bookID) {
 	cout << "Wholesale Cost: " << book[bookID]->getWholesale() << endl;
 	cout << "Retail Cost: " << book[bookID]->getRetail() << endl;
 	pause();
-	clear();
+	clears();
 }
 size_t findCaseInsensitive(string data, string toSearch, size_t pos) {
 	// Convert complete given String to lower case
@@ -80,7 +80,7 @@ void executeFind(bookType *book[]) {
 	results[0].amount = 0;
 	
 	while (exitExecuteFind != true) {
-		clear();
+		clears();
 		validInput = false;
 		cout << "\t\tSerendipity Booksellers\n\t\tInventory Database\n\n\t\t1. Look up a Book\n\t\t2. Add a Book\n\t\t3. Edit a Book's Record\n\t\t4. Delete a Book\n\t\t5. Return to Main Menu\n\n\t\tPlease type in your input: 1\n";
 		int index = lookUpBook(book, results);
@@ -99,7 +99,7 @@ void executeFind(bookType *book[]) {
 							*/
 							
 							
-							clear();
+							clears();
 							cout << endl;
 							for (int y = 0; y < results[0].amount; y++) {
 								string selected = "   ";
@@ -119,7 +119,7 @@ void executeFind(bookType *book[]) {
 								case 'Y':
 								case 'y':
 									validInput = true;
-									clear();
+									clears();
 									bookInfo(book, results[x].index);
 									exitExecuteFind = true;
 									break;
@@ -149,7 +149,7 @@ void executeFind(bookType *book[]) {
 						case 'Y':
 						case 'y':
 							validInput = true;
-							clear();
+							clears();
 							break;
 						case 'N':
 						case 'n':
@@ -209,12 +209,12 @@ void addBook(bookType *book[]) {
 	resetTemps(tBook);
 	bool exitAddBook = false;
 	while (exitAddBook != true) {
-		clear();
+		clears();
 		
 		if (book[0]->getBookCount() >= DBSIZE) {
 			cout << "Database is full! Please delete some books to proceed! (" << book[0]->getBookCount() << "/" << DBSIZE << ")\n";
 			pause();
-			clear();
+			clears();
 			exitAddBook = true;
 		} else {
 			bool validInput;
@@ -243,7 +243,7 @@ void addBook(bookType *book[]) {
 				switch(selection) {
 					case '1':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Book Title: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						getline(cin, temp);
@@ -251,7 +251,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '2':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput ISBN: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						getline(cin, temp);
@@ -259,7 +259,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '3':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Author: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						getline(cin, temp);
@@ -267,7 +267,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '4':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Publisher: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						getline(cin, temp);
@@ -275,7 +275,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '5':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Date: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						getline(cin, temp);
@@ -283,7 +283,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '6':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Quantity on Hand: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						cin >> tempInt;
@@ -291,7 +291,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '7':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Wholesale Cost: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						cin >> tempDouble;
@@ -299,7 +299,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '8':
 						validInput = true;
-						clear();
+						clears();
 						cout << "*************************************************************\n\tInput Retail Price: ";
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						cin >> tempDouble;
@@ -307,7 +307,7 @@ void addBook(bookType *book[]) {
 						break;
 					case '9':
 						validInput = true;
-						clear();
+						clears();
 						
 						//SAVING CODE
 						
@@ -329,24 +329,24 @@ void addBook(bookType *book[]) {
 						cout << "Save was successful. Database: (" << book[0]->getBookCount() << "/" << DBSIZE << ")";
 						cout << endl;
 						resetTemps(tBook);
-						clear();
+						clears();
 						cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 						break;
 					case '0':
 						validInput = true;
-						clear();
+						clears();
 						resetTemps(tBook);
 						exitAddBook = true;
 						break;
 					default:
 						validInput = false;
-						clear(); 
+						clears(); 
 						cout << "\nPlease enter a valid selection!\n";
 						break;
 				}	
 			} while (validInput == false);
 		}
-		clear();
+		clears();
 	}
 }
 
@@ -363,7 +363,7 @@ void editBook(bookType *book[]) {
 	
 	
 	while (exitEditBook != true) {
-		clear();
+		clears();
 		validInput = false;
 		cout << "\t\tSerendipity Booksellers\n\t\tInventory Database\n\n\t\t1. Look up a Book\n\t\t2. Add a Book\n\t\t3. Edit a Book's Record\n\t\t4. Delete a Book\n\t\t5. Return to Main Menu\n\n\t\tPlease type in your input: 3\n"; 
 		int index = lookUpBook(book, results);
@@ -374,7 +374,7 @@ void editBook(bookType *book[]) {
 					validInput = false;
 					do {
 						if (validInput != true) {
-							clear();
+							clears();
 							cout << endl;
 							for (int y = 0; y < results[0].amount; y++) {
 								string selected = "   ";
@@ -454,7 +454,7 @@ void deleteBook(bookType *book[]) {
 	
 	
 	while (exitDeleteBook != true) {
-		clear();
+		clears();
 		validInput = false;
 		cout << "\t\tSerendipity Booksellers\n\t\tInventory Database\n\n\t\t1. Look up a Book\n\t\t2. Add a Book\n\t\t3. Edit a Book's Record\n\t\t4. Delete a Book\n\t\t5. Return to Main Menu\n\n\t\tPlease type in your input: 4\n"; 
 		int index = lookUpBook(book, results);
@@ -465,7 +465,7 @@ void deleteBook(bookType *book[]) {
 					validInput = false;
 					do {
 						if (validInput != true) {
-							clear();
+							clears();
 							cout << endl;
 							for (int y = 0; y < results[0].amount; y++) {
 								string selected = "   ";
@@ -532,7 +532,7 @@ void deleteBook(bookType *book[]) {
 }
 
 void printDatabase(bookType *book[]) {
-	clear();
+	clears();
 	cout << "\t\t\t\t\t\t\t\t----------- Database Table -----------\n" << endl;
 	cout << "ID\t\t\t\t\t\t\t\t\t\t\t\t\tTitle\t\t\tISBN\t\tAuthor\t\tPublisher\tDate\tQty\tWholesale Retail\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 	for (int x = 0; x < book[0]->getBookCount(); x++) {
@@ -549,7 +549,7 @@ void inventoryDatabaseModule(bookType *book[]) {
 	do {
 		char selection;
 		bool validInput;
-		clear();
+		clears();
 		do {
 			cout << "\t\tSerendipity Booksellers\n\t\tInventory Database\n\n\t\t1. Look up a Book\n\t\t2. Add a Book\n\t\t3. Edit a Book's Record\n\t\t4. Delete a Book\n\t\t5. Return to Main Menu\n\n\t\tPlease type in your input: "; 
 			cin >> selection;
@@ -581,7 +581,7 @@ void inventoryDatabaseModule(bookType *book[]) {
 						break;
 					default:
 						validInput = false;
-						clear(); 
+						clears(); 
 						cout << "\nPlease enter a valid selection!\n";
 						break;
 			}			
@@ -590,7 +590,7 @@ void inventoryDatabaseModule(bookType *book[]) {
 }
 
 void removeBook(bookType *book[], int x) {
-	clear();
+	clears();
 	int finalBook = x;
 	cout << "Book \"" << book[x]->getTitle() << "\" has been deleted." << endl;
 	for (int y = x; y < DBSIZE-1; y++){
@@ -620,7 +620,7 @@ void editor(bookType *book[], int x) {
 	tBook.setWholesale(book[x]->getWholesale());
 	tBook.setRetail(book[x]->getRetail());
 	while (exitEditor != true) {
-		clear();
+		clears();
 		bool validInput;
 		char selection;
 		string temp;
@@ -647,7 +647,7 @@ void editor(bookType *book[], int x) {
 			switch(selection) {
 				case '1':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Book Title: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					getline(cin, temp);
@@ -655,7 +655,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '2':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput ISBN: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					getline(cin, temp);
@@ -663,7 +663,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '3':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Author: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					getline(cin, temp);
@@ -671,7 +671,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '4':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Publisher: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					getline(cin, temp);
@@ -679,7 +679,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '5':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Date: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					getline(cin, temp);
@@ -687,7 +687,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '6':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Quantity on Hand: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					cin >> tempInt;
@@ -695,7 +695,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '7':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Wholesale Cost: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					cin >> tempDouble;
@@ -703,7 +703,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '8':
 					validInput = true;
-					clear();
+					clears();
 					cout << "*************************************************************\n\tInput Retail Price: ";
 					cin.ignore(numeric_limits<streamsize>::max(),'\n'); //Clear input buffer from previous text.
 					cin >> tempDouble;
@@ -711,7 +711,7 @@ void editor(bookType *book[], int x) {
 					break;
 				case '9':
 					validInput = true;
-					clear();
+					clears();
 					
 					//SAVING CODE
 					book[book[0]->getBookCount()] = new bookType();
@@ -734,17 +734,17 @@ void editor(bookType *book[], int x) {
 					cout << endl;
 					resetTemps(tBook);
 					pause();
-					clear();
+					clears();
 					break;
 				case '0':
 					validInput = true;
-					clear();
+					clears();
 					resetTemps(tBook);
 					exitEditor = true;
 					break;
 				default:
 					validInput = false;
-					clear(); 
+					clears(); 
 					cout << "\nPlease enter a valid selection!\n";
 					break;
 			}	

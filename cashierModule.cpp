@@ -235,7 +235,7 @@ void cashierModule(bookType *book[]) {
 	cout.precision(2);
 	do {
 		exitCashier = false;
-		clear();
+		clears();
 		cout << "\t\tSerendipity Booksellers\n\t\tCashier Module Setup\n\tFORMAT: # x TITLE";
 		
 		gatherRequests(book, receipts, items);
@@ -249,7 +249,7 @@ void cashierModule(bookType *book[]) {
 				int rounding;
 				float subtotal, total = 0, totalSubTotal = 0, totalTax = 0, tax, taxRate = 0.06;
 				
-				clear();
+				clears();
 				cout << "Serendipity Booksellers\n\nDate: " << getDate() << "\n\nQty\tISBN\t\tTitle\t\t\t\t\t\t\t\tPrice\tTotal\n-----------------------------------------------------------------------------------------------------------------\n";
 				
 				for (int x = 0; x < items; x++) {
@@ -293,7 +293,7 @@ void cashierModule(bookType *book[]) {
 						case 'N':
 						case 'n':
 							validInput = true;
-							clear();
+							clears();
 							exitCashier = true;
 							break;
 						default:
@@ -327,12 +327,12 @@ void cashierModule(bookType *book[]) {
 							case 'Y':
 							case 'y':
 								validInput = true;
-								clear();
+								clears();
 								break;
 							case 'N':
 							case 'n':
 								validInput = true;
-								clear();
+								clears();
 								exitCashier = true;
 								break;
 							default:
