@@ -3,7 +3,7 @@
 1
 Star Wars
 2
-0345260791
+0-3452-6079-1
 3
 George Lucas
 4
@@ -20,7 +20,7 @@ Del Rey
 1
 The Empire Strikes Back (Star Wars)
 2
-034529209X
+0-3452-9209-X
 3
 George Lucas
 4
@@ -37,7 +37,7 @@ Ballantine
 1
 Splinter of the Mind's Eye (Star Wars)
 2
-0345320239
+0-3453-2023-9
 3
 George Lucas
 4
@@ -45,16 +45,16 @@ Del Rey
 5
 11/08/2017
 6
-3
+4
 7
-24
+24.00
 8
 26.50
 9
 1
 Return of the Jedi (Star Wars)
 2
-0345307674
+0-3453-0767-4
 3
 George Lucas
 4
@@ -71,7 +71,7 @@ Del Rey
 1
 Heir to the Empire (Star Wars: The Thrawn Trilogy, Vol. 1)
 2
-0553296124
+0-5532-9612-4
 3
 Timothy Zahn
 4
@@ -88,7 +88,7 @@ Bantam
 1
 Dark Force Rising (Star Wars: The Thrawn Trilogy, Vol. 2
 2
-0553560719
+0-5535-6071-9
 3
 Timothy Zahn
 4
@@ -105,7 +105,7 @@ Bantam
 1
 The Last Command (Star Wars: The Thrawn Trilogy)
 2
-0553564927
+0-5535-6492-7
 3
 Timothy Zahn
 4
@@ -122,7 +122,7 @@ Bantam
 1
 Specter of the Past (Star Wars: The Hand of Thrawn #1)
 2
-0553298046
+0-5532-9804-6
 3
 Timothy Zahn
 4
@@ -139,7 +139,7 @@ Bantam
 1
 Vision of the Future (Star Wars: The Hand of Thrawn, Book 2)
 2
-0553578790
+0-5535-7879-0
 3
 Timothy Zahn
 4
@@ -156,7 +156,7 @@ Bantam
 1
 Battlestar Galactica
 2
-185286088X
+1-8528-6088-X
 3
 Glen A.;Thurston, Robert Larson 
 4
@@ -173,7 +173,7 @@ Titan Books
 1
 New Battlestar Galactica Volume 1 (Battlestar Galactica (Dynamite)) (v. 1)
 2
-1933305339
+1-9333-0533-9
 3
 Diamond Comic Distributors Inc.
 4
@@ -190,7 +190,7 @@ Dynamite Entertainment
 1
 New Battlestar Galactica Volume II Hardcover (Battlestar Galactica (Dynamite)) 
 2
-1933305533
+1-9333-0553-3
 3
 Greg Pak
 4
@@ -207,7 +207,7 @@ Dynamite Entertainment
 1
 The Hobbit
 2
-0618968636
+0-6189-6863-6
 3
 J.R.R. Tolkien
 4
@@ -224,7 +224,7 @@ Houghton Mifflin Harcourt
 1
 The Lord of the Rings: 50th Anniversary, One Vol. Edition
 2
-0618645616
+0-6186-4561-6
 3
 J.R.R. Tolkien
 4
@@ -241,7 +241,7 @@ Houghton Mifflin Harcourt
 1
 The Two Towers
 2
-0395489334
+0-3954-8933-4
 3
 J.R.R. Tolkien
 4
@@ -258,7 +258,7 @@ Houghton Mifflin Harcourt
 1
 The Return of the King
 2
-039548930X
+0-3954-8930-X
 3
 J.R.R. Tolkien
 4
@@ -275,7 +275,7 @@ Houghton Mifflin Harcourt
 1
 The Fellowship of the Ring
 2
-0395489318
+0-3954-8931-8
 3
 J.R.R. Tolkien
 4
@@ -292,7 +292,7 @@ Houghton Mifflin Harcourt
 1
 C++ Programming: From Problem Analysis to Program Design 7th Edition
 2
-1285852745
+1-2858-5274-5
 3
 D.S. Malik
 4
@@ -304,12 +304,12 @@ Course Technology
 7
 85.67
 8
-100.00
+110.55
 9
 1
 Digital Computer Electronics
 2
-0074622358
+0-0746-2235-8
 3
 Malvino
 4
@@ -326,7 +326,7 @@ Mc Graw Hill India
 1
 Assembly Language for x86 Processors (7th Edition)
 2
-0133769402
+0-1337-6940-2
 3
 Irvin, K.R.
 4
@@ -349,7 +349,7 @@ Pearson
 1
 The Tainted Sword
 2
-1560763957
+1-5607-6395-7
 3
 Watry, D.J.
 4

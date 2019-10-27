@@ -2,16 +2,13 @@
 #include "bookType.h"
 #include "resultsType.h"
 
-#include "windows.h"
-
-
 //--------------------------------------------------------//
 // File Name: reportModule.cpp
-// Project name: Serendipity Ch 9-11
+// Project name: Serendipity Overloading
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 9/14/19
-// Date of Last Modification: 9/14/19
+// Creation Date: 10/27/19
+// Date of Last Modification: 10/27/19
 //--------------------------------------------------------//
 // Purpose: This class displays the reportModule.
 //
@@ -254,10 +251,84 @@ void repRetail(bookType *book[]) {
 
 	}
 }
-void repQty() {
-	cout << "You selected Listing by Quantity." << endl;
-	pause();
+void repQty(bookType *book[]) {
 	clears();
+	
+	//Call Sort
+	sortByQty(book);
+	
+	bool exitQty = false;
+	int page = 1, maxPages;
+	if (book[0]->getBookCount() >= 10) {
+		maxPages = (book[0]->getBookCount()+9) / 10;
+	} else {
+		maxPages = 1;
+	}
+	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
+	pause();
+	
+	while (exitQty != true) {
+		int numOnPage = 0;
+		bool skip = false;
+		clears();
+		cout << "\t\t----------- Serendipity BookSellers Report Listing -----------\n" << endl;
+		cout << "\tDate: " << getDate() << "\tPAGE: " << page << " of " << maxPages << "\t\tDatabase Info (Books / Max): " << book[0]->getBookCount() << "/" << DBSIZE << "\n" << endl;
+		cout << "Title                                             " << " " << "ISBN      " << " " << "  \tQTY" << endl;
+		cout << "----------------------------------------------------------------------------------------------" << endl;
+		
+		
+		int totalQty = 0;
+	
+		for (int x = 0; x < book[0]->getBookCount(); x++) {
+			totalQty += book[x]->getQtyOnHand();
+		}
+		
+		for (int x = (page*10)-10; x < book[0]->getBookCount(); x++) {
+			
+			if (numOnPage == 10)
+				skip = true;
+			numOnPage++;
+			if (skip != true) {
+				string aTitle = book[x]->getTitle().substr(0,49);
+				cout << left << setw(50) << aTitle << " " << setw(10) << book[x]->getIsbn() << " " << right << setw(5) << "\t" << book[x]->getQtyOnHand() << "\n" << endl;
+
+			}
+		}
+		
+		if (page == maxPages) {
+			cout << "Total Qty: " << totalQty << "\n" << endl;
+		}
+		cout << "\tPress UP_ARROW to go up a page. Press DOWN_ARROW to go down a page. Press ESC to quit. F5 to go-to." << endl;
+		
+		bool keyPressed = false;
+		while (keyPressed != true){
+			if (GetAsyncKeyState(VK_UP)) {
+				if (page == maxPages)
+					page = 1;
+				else
+					page++;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_DOWN)) {
+				if (page == 1)
+					page = maxPages;
+				else
+					page--;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_ESCAPE)) {
+				exitQty = true;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_F5)) {
+				cout << "\nEnter Page to go to: ";
+				cin >> page;
+				keyPressed = true;
+			}
+		}
+
+
+	}
 }
 void repCost() {
 	cout << "You selected Listing by Cost." << endl;
@@ -277,6 +348,7 @@ void reportModule(bookType *book[]) {
 	do {
 			if (validInput != true) {
 				cout << "\t\tSerendipity Booksellers\n\t\t\tReports\n\n\t\t1. Inventory Listing\n\t\t2. Inventory Wholesale Value\n\t\t3. Inventory Retail Value\n\t\t4. Listing by Quantity\n\t\t5. Listing by Cost\n\t\t6. Listing by Age\n\t\t7. Return to Main Menu\n\n\t\tPlease enter your input: ";
+				cin.clear();
 				cin >> selection;
 				switch(selection) {
 					case '1':
@@ -293,7 +365,7 @@ void reportModule(bookType *book[]) {
 						break;
 					case '4':
 						validInput = true;
-						repQty();
+						repQty(book);
 						break;
 					case '5':
 						validInput = true;

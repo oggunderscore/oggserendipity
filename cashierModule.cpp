@@ -263,8 +263,8 @@ void cashierModule(bookType *book[]) {
 					total += subtotal + tax;
 					
 					book[receipts[x].id]->setQtyOnHand(book[receipts[x].id]->getQtyOnHand() - receipts[x].amount); //subtract amount from book.
-					
-					cout << receipts[x].amount << "\t" << receipts[x].ISBN << "\t" << setw(48) << left << receipts[x].bookTitle << "\t\t" << right << setw(6) << receipts[x].retail << "\t" << right << setw(6) << subtotal << endl;
+					string aTitle = receipts[x].bookTitle.substr(0,48);
+					cout << receipts[x].amount << "\t" << receipts[x].ISBN << "\t" << setw(48) << left << aTitle << "\t\t" << right << setw(6) << receipts[x].retail << "\t" << right << setw(6) << subtotal << endl;
 					
 				}
 

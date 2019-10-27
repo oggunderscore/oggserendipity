@@ -3,11 +3,11 @@
 #include "resultsType.h"
 //--------------------------------------------------------//
 // File Name: mainMenu.cpp
-// Project name: Serendipity Ch 9-11
+// Project name: Serendipity Overloading
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 9/14/19
-// Date of Last Modification: 9/14/19
+// Creation Date: 10/27/19
+// Date of Last Modification: 10/27/19
 //--------------------------------------------------------//
 // Purpose: This class serves the purpose of the main
 // source and compilation for the rest of the program.
@@ -58,6 +58,7 @@ void mainMenu(bookType *book[]) {
 			clears();
 			cout << "\n\t\tSerendipity Book Sellers\n\t\t\tMain Menu\n\n";
 			cout << "\t\t1. Cashier Module\n\t\t2. Inventory Database Module.\n\t\t3. Report Module.\n\t\t4. Exit\n\n\tPlease type in your input: ";
+			cin.clear();
 			cin >> selection;
 			switch(selection) {
 				case '1':

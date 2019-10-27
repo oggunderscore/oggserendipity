@@ -13,14 +13,15 @@
 #include <sstream>
 #include <ctype.h>
 #include <algorithm>
+#include "windows.h"
 
 //--------------------------------------------------------//
 // File Name: serendipity.h
-// Project name: Serendipity Ch 9-11
+// Project name: Serendipity Overloading
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 9/14/19
-// Date of Last Modification: 9/14/19
+// Creation Date: 10/27/19
+// Date of Last Modification: 10/27/19
 //--------------------------------------------------------
 // Purpose: Using a inputted key from a file, compare 
 // and grade accordingly to the grading key, and 
@@ -63,6 +64,10 @@ void reportModule(bookType *[]);
 void clears();
 void pause();
 int lookUpBook(bookType *[], resultsType []);
+
+//Sorts
+void sortByQty(bookType *[]);
+
 string getDate();
 
 const int DBSIZE = 20;

@@ -3,6 +3,43 @@
 
 
 int bookType::bookCount = 0;
+
+//Overloaders
+bool bookType::operator<(bookType &otherBook) { 
+	if (this->getQtyOnHand() < otherBook.getQtyOnHand())
+		return true;
+	else 
+		return false;
+}
+bool bookType::operator<=(bookType &otherBook) { 
+	if (this->getQtyOnHand() <= otherBook.getQtyOnHand())
+		return true;
+	else 
+		return false;
+}
+bool bookType::operator>=(bookType &otherBook) { 
+	if (this->getQtyOnHand() >= otherBook.getQtyOnHand())
+		return true;
+	else 
+		return false;
+}
+bool bookType::operator==(bookType &otherBook) { 
+	if (this->getQtyOnHand() == otherBook.getQtyOnHand())
+		return true;
+	else 
+		return false;
+}
+bool bookType::operator!=(bookType &otherBook) { 
+	if (this->getQtyOnHand() != otherBook.getQtyOnHand())
+		return true;
+	else 
+		return false;
+}
+
+
+
+
+
 //Constructors
 bookType::bookType() {
 	title = "EMPTY";
