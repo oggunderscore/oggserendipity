@@ -3,11 +3,11 @@
 #include "resultsType.h"
 //--------------------------------------------------------//
 // File Name: cashierModule.cpp
-// Project name: Serendipity Ch 9-11
+// Project name: Serendipity Overloading Sorting
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 9/14/19
-// Date of Last Modification: 9/14/19
+// Creation Date: 11/21/19
+// Date of Last Modification: 11/21/19
 //--------------------------------------------------------//
 // Purpose: This class displays the cashierModule.
 // It also functions as intended to gather information from

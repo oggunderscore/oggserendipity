@@ -4,11 +4,11 @@
 
 //--------------------------------------------------------//
 // File Name: reportModule.cpp
-// Project name: Serendipity Overloading
+// Project name: Serendipity Overloading Sorting
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 10/27/19
-// Date of Last Modification: 10/27/19
+// Creation Date: 11/21/19
+// Date of Last Modification: 11/21/19
 //--------------------------------------------------------//
 // Purpose: This class displays the reportModule.
 //
@@ -252,18 +252,21 @@ void repRetail(bookType *book[]) {
 	}
 }
 void repQty(bookType *book[]) {
-	clears();
 	
-	//Call Sort
-	sortByQty(book);
+	clears();
 	
 	bool exitQty = false;
 	int page = 1, maxPages;
+	
+	//Call Sort
+	sort(book, 0);
+	
 	if (book[0]->getBookCount() >= 10) {
 		maxPages = (book[0]->getBookCount()+9) / 10;
 	} else {
 		maxPages = 1;
 	}
+	
 	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
 	pause();
 	
@@ -330,15 +333,160 @@ void repQty(bookType *book[]) {
 
 	}
 }
-void repCost() {
-	cout << "You selected Listing by Cost." << endl;
-	pause();
+void repCost(bookType *book[]) {
 	clears();
+	
+	bool exitCost = false;
+	int page = 1, maxPages;
+	
+	//Call Sort
+	sort(book, 1); //!!! CHANGE THIS
+	
+	if (book[0]->getBookCount() >= 10) {
+		maxPages = (book[0]->getBookCount()+9) / 10;
+	} else {
+		maxPages = 1;
+	}
+	
+	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
+	pause();
+	
+	while (exitCost != true) {
+		int numOnPage = 0;
+		bool skip = false;
+		clears();
+		cout << "\t\t----------- Serendipity BookSellers Report Listing -----------\n" << endl;
+		cout << "\tDate: " << getDate() << "\tPAGE: " << page << " of " << maxPages << "\t\tDatabase Info (Books / Max): " << book[0]->getBookCount() << "/" << DBSIZE << "\n" << endl;
+		cout << "Title                                             " << " " << "ISBN      " << " " << "  \tWholesale" << endl;
+		cout << "----------------------------------------------------------------------------------------------" << endl;
+		
+		
+		double totalCost = 0.0;
+	
+		for (int x = 0; x < book[0]->getBookCount(); x++) {
+			totalCost += book[x]->getWholesale();
+		}
+		
+		for (int x = (page*10)-10; x < book[0]->getBookCount(); x++) {
+			
+			if (numOnPage == 10)
+				skip = true;
+			numOnPage++;
+			if (skip != true) {
+				string aTitle = book[x]->getTitle().substr(0,49);
+				cout << left << setw(50) << aTitle << " " << setw(10) << book[x]->getIsbn() << " " << right << setw(5) << "\t" << book[x]->getWholesale() << "\n" << endl;
+
+			}
+		}
+		
+		if (page == maxPages) {
+			cout << "Total Cost: " << totalCost << "\n" << endl;
+		}
+		cout << "\tPress UP_ARROW to go up a page. Press DOWN_ARROW to go down a page. Press ESC to quit. F5 to go-to." << endl;
+		
+		bool keyPressed = false;
+		while (keyPressed != true){
+			if (GetAsyncKeyState(VK_UP)) {
+				if (page == maxPages)
+					page = 1;
+				else
+					page++;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_DOWN)) {
+				if (page == 1)
+					page = maxPages;
+				else
+					page--;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_ESCAPE)) {
+				exitCost = true;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_F5)) {
+				cout << "\nEnter Page to go to: ";
+				cin >> page;
+				keyPressed = true;
+			}
+		}
+
+
+	}
 }
-void repAge() {
-	cout << "You selected Listing by Age." << endl;
-	pause();
+void repAge(bookType *book[]) {
 	clears();
+	
+	bool exitAge = false;
+	int page = 1, maxPages;
+	
+	//Call Sort
+	sort(book, 2); //!!! CHANGE THIS
+	
+	if (book[0]->getBookCount() >= 10) {
+		maxPages = (book[0]->getBookCount()+9) / 10;
+	} else {
+		maxPages = 1;
+	}
+	
+	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
+	pause();
+	
+	while (exitAge != true) {
+		int numOnPage = 0;
+		bool skip = false;
+		clears();
+		cout << "\t\t----------- Serendipity BookSellers Report Listing -----------\n" << endl;
+		cout << "\tDate: " << getDate() << "\tPAGE: " << page << " of " << maxPages << "\t\tDatabase Info (Books / Max): " << book[0]->getBookCount() << "/" << DBSIZE << "\n" << endl;
+		cout << "Title                                             " << " " << "ISBN      " << " " << "  \tWholesale" << endl;
+		cout << "----------------------------------------------------------------------------------------------" << endl;
+		
+		
+		for (int x = (page*10)-10; x < book[0]->getBookCount(); x++) {
+			
+			if (numOnPage == 10)
+				skip = true;
+			numOnPage++;
+			if (skip != true) {
+				string aTitle = book[x]->getTitle().substr(0,49);
+				string aAuthor = book[x]->getAuthor().substr(0,19);
+				string aPublisher = book[x]->getPublisher().substr(0,19);
+				cout << left << setw(50) << aTitle << " " << setw(10) << book[x]->getIsbn() << " " << setw(20) << aAuthor << " " << setw(20) << aPublisher << " " << setw(20) << book[x]->getDateAdded() << " " << right << setw(5) << book[x]->getQtyOnHand() << " " << "        $" << setw(9) << right << book[x]->getWholesale() << "      " << left << "$  " << right << setw(6) << book[x]->getRetail() << "\n" << endl;
+
+			}
+		}
+		
+		cout << "\tPress UP_ARROW to go up a page. Press DOWN_ARROW to go down a page. Press ESC to quit. F5 to go-to." << endl;
+		
+		bool keyPressed = false;
+		while (keyPressed != true){
+			if (GetAsyncKeyState(VK_UP)) {
+				if (page == maxPages)
+					page = 1;
+				else
+					page++;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_DOWN)) {
+				if (page == 1)
+					page = maxPages;
+				else
+					page--;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_ESCAPE)) {
+				exitAge = true;
+				keyPressed = true;
+			}
+			if (GetAsyncKeyState(VK_F5)) {
+				cout << "\nEnter Page to go to: ";
+				cin >> page;
+				keyPressed = true;
+			}
+		}
+
+
+	}
 }
 
 void reportModule(bookType *book[]) {
@@ -369,11 +517,11 @@ void reportModule(bookType *book[]) {
 						break;
 					case '5':
 						validInput = true;
-						repCost();
+						repCost(book);
 						break;
 					case '6':
 						validInput = true;
-						repAge();
+						repAge(book);
 						break;
 					case '7':
 						validInput = true;

@@ -17,11 +17,11 @@
 
 //--------------------------------------------------------//
 // File Name: serendipity.h
-// Project name: Serendipity Overloading
+// Project name: Serendipity Overloading Sorting
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 10/27/19
-// Date of Last Modification: 10/27/19
+// Creation Date: 11/21/19
+// Date of Last Modification: 11/21/19
 //--------------------------------------------------------
 // Purpose: Using a inputted key from a file, compare 
 // and grade accordingly to the grading key, and 
@@ -50,8 +50,6 @@
 
 using namespace std;
 
-//short GetAsyncKeyState(int vKey);
-
 class bookType;
 class resultsType;
 
@@ -66,7 +64,7 @@ void pause();
 int lookUpBook(bookType *[], resultsType []);
 
 //Sorts
-void sortByQty(bookType *[]);
+void sort(bookType *[], int);
 
 string getDate();
 

@@ -3,11 +3,11 @@
 #include "resultsType.h"
 //--------------------------------------------------------//
 // File Name: inventoryDatabaseModule.cpp
-// Project name: Serendipity Ch 9-11
+// Project name: Serendipity Overloading Sorting
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 9/14/19
-// Date of Last Modification: 9/14/19
+// Creation Date: 11/21/19
+// Date of Last Modification: 11/21/19
 //--------------------------------------------------------//
 // Purpose: This class displays the inventoryDatabaseModule.
 //--------------------------------------------------------//
@@ -183,7 +183,6 @@ int lookUpBook(bookType *book[], resultsType results[]) {
 		if (found != string::npos) {
 			string title = book[x]->getTitle();
 			results[results[0].amount].bookTitle = title; // CRASH
-			cout << "OOF!" << endl;
 			results[results[0].amount].index = x;
 			results[0].amount += 1;
 		} else { 
@@ -593,16 +592,18 @@ void removeBook(bookType *book[], int x) {
 	clears();
 	int finalBook = x;
 	cout << "Book \"" << book[x]->getTitle() << "\" has been deleted." << endl;
-	for (int y = x; y < DBSIZE-1; y++){
-		book[y]->setTitle(book[y+1]->getTitle());
-		book[y]->setIsbn(book[y+1]->getIsbn());
-		book[y]->setAuthor(book[y+1]->getAuthor());
-		book[y]->setPublisher(book[y+1]->getPublisher());
-		book[y]->setDateAdded(book[y+1]->getDateAdded());
-		book[y]->setQtyOnHand(book[y+1]->getQtyOnHand());
-		book[y]->setWholesale(book[y+1]->getWholesale());
-		book[y]->setRetail(book[y+1]->getRetail());
-		finalBook++;
+	for (int y = x; y < book[0]->getBookCount()-1; y++){
+		if (y != book[0]->getBookCount()-1) {
+			book[y]->setTitle(book[y+1]->getTitle());
+			book[y]->setIsbn(book[y+1]->getIsbn());
+			book[y]->setAuthor(book[y+1]->getAuthor());
+			book[y]->setPublisher(book[y+1]->getPublisher());
+			book[y]->setDateAdded(book[y+1]->getDateAdded());
+			book[y]->setQtyOnHand(book[y+1]->getQtyOnHand());
+			book[y]->setWholesale(book[y+1]->getWholesale());
+			book[y]->setRetail(book[y+1]->getRetail());
+			finalBook++;
+		}
 	}
 	delete book[finalBook];
 	book[0]->decBookCount();
@@ -714,9 +715,8 @@ void editor(bookType *book[], int x) {
 					clears();
 					
 					//SAVING CODE
-					book[book[0]->getBookCount()] = new bookType();
-					book[book[0]->getBookCount()]->setAll(tBook.getTitle(), tBook.getIsbn(), tBook.getAuthor(), tBook.getPublisher(), tBook.getQtyOnHand(), tBook.getWholesale(), tBook.getRetail());
-					book[book[0]->getBookCount()]->setDateAdded(tBook.getDateAdded());
+					book[x]->setAll(tBook.getTitle(), tBook.getIsbn(), tBook.getAuthor(), tBook.getPublisher(), tBook.getQtyOnHand(), tBook.getWholesale(), tBook.getRetail());
+					book[x]->setDateAdded(tBook.getDateAdded());
 
 					
 					/*

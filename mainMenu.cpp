@@ -3,11 +3,11 @@
 #include "resultsType.h"
 //--------------------------------------------------------//
 // File Name: mainMenu.cpp
-// Project name: Serendipity Overloading
+// Project name: Serendipity Overloading Sorting
 //--------------------------------------------------------
 // Creators name and email: Kevin Nguyen, oggunderscore@gmail.com
-// Creation Date: 10/27/19
-// Date of Last Modification: 10/27/19
+// Creation Date: 11/21/19
+// Date of Last Modification: 11/21/19
 //--------------------------------------------------------//
 // Purpose: This class serves the purpose of the main
 // source and compilation for the rest of the program.
@@ -43,10 +43,41 @@
 
 time_t t = time(NULL);
 tm* timePointer = localtime(&t);
-char buffer[26];
+string day;
+string month;
+string year;
 
 string getDate() {
-	return buffer;
+	string date = month + "/" + day + "/" + year;
+	return date;
+}
+
+void convertMonthToInt(string tMonth) {
+	if (tMonth == "Jan") {
+		month = "01";
+	} else if (tMonth == "Feb") {
+		month = "02";
+	} else if (tMonth == "Mar") {
+		month = "03";
+	} else if (tMonth == "Apr") {
+		month = "04";
+	} else if (tMonth == "May") {
+		month = "05";
+	} else if (tMonth == "Jun") {
+		month = "06";
+	} else if (tMonth == "Jul") {
+		month = "07";
+	} else if (tMonth == "Aug") {
+		month = "08";
+	} else if (tMonth == "Sep") {
+		month = "09";
+	} else if (tMonth == "Oct") {
+		month = "10";
+	} else if (tMonth == "Nov") {
+		month = "11";
+	} else if (tMonth == "Dec") {
+		month = "12";
+	}
 }
 
 void mainMenu(bookType *book[]) {
@@ -96,7 +127,18 @@ int main() {
 	
 	bookType *book[20];
 	
-	strftime(buffer, sizeof(buffer), "%b %d, %Y", timePointer);
+	char tMonth[15], tDay[3], tYear[5];
+	
+	strftime(tMonth, sizeof(tMonth), "%b", timePointer);
+
+	convertMonthToInt(tMonth);
+	
+	strftime(tDay, sizeof(tDay), "%d", timePointer);
+	day = tDay;
+	
+	strftime(tYear, sizeof(tYear), "%Y", timePointer);
+	year = tYear;
+	
 	mainMenu(book);
     return 0;
 }
