@@ -4,7 +4,7 @@
 
 void sort(bookType *book[], int length) {
 	int index;
-	int smallestIndex;
+	int largestIndex;
 	int location;
 	bookType *temp;
 
@@ -12,19 +12,19 @@ void sort(bookType *book[], int length) {
 	
 	for (index = 0; index < length - 1; index++){
 		//Step a
-		smallestIndex = index;
+		largestIndex = index;
 		
 		for (location = index + 1; location < length; location++){
-			cout << "if " << book[location]->getTitle() << " has less than " << book[smallestIndex]->getTitle() << endl;
-			if (book[location] < book[smallestIndex]) {
-				cout << book[smallestIndex]->getTitle() << ":" << book[smallestIndex]->getQtyOnHand() << " has smaller qty than " << book[location]->getTitle() << ":" << book[location]->getQtyOnHand() << endl;
-				smallestIndex = location;
+			cout << "if " << book[location]->getTitle() << " is more than " << book[largestIndex]->getTitle() << endl;
+			if (*book[location] > *book[largestIndex]) {
+				cout << book[location]->getTitle() << ":" << book[location]->getQtyOnHand() << " > " << book[largestIndex]->getTitle() << ":" << book[largestIndex]->getQtyOnHand() << endl;
+				largestIndex = location;
 			}
 		}
 		//Step b
-		cout << "Swapping " << book[smallestIndex]->getTitle() << " and " << book[index]->getTitle() << endl;
-		temp = book[smallestIndex];
-		book[smallestIndex] = book[index];
+		cout << "Swapping " << book[largestIndex]->getTitle() << " and " << book[index]->getTitle() << endl;
+		temp = book[largestIndex];
+		book[largestIndex] = book[index];
 		book[index] = temp;
 	}
 }

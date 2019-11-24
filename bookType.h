@@ -53,10 +53,11 @@ class bookType {
 		
 		//Overloaders
 		bool operator<(bookType &);
-		bool operator<=(bookType &);
-		bool operator>=(bookType &);
-		bool operator==(bookType &);
-		bool operator!=(bookType &);
+		bool operator>(bookType &);
+		bool operator<=(bookType *);
+		bool operator>=(bookType *);
+		bool operator==(bookType *);
+		bool operator!=(bookType *);
 		
 		//Functs
 		bool equals(bookType *);

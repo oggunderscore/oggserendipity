@@ -6,33 +6,41 @@ int bookType::bookCount = 0;
 
 //Overloaders
 bool bookType::operator<(bookType &otherBook) { 
-	if (thisBook->getQtyOnHand() < otherBook.getQtyOnHand()) {
+	if (this->getQtyOnHand() < otherBook.getQtyOnHand()) {
 		cout << "TEST" << endl;
 		return true;
 	}
 	else 
 		return false;
 }
-bool bookType::operator<=(bookType &otherBook) { 
-	if (this->getQtyOnHand() <= otherBook.getQtyOnHand())
+bool bookType::operator>(bookType &otherBook) { 
+	if (this->getQtyOnHand() > otherBook.getQtyOnHand()) {
+		cout << "TEST" << endl;
+		return true;
+	}
+	else 
+		return false;
+}
+bool bookType::operator<=(bookType *otherBook) { 
+	if (this->getQtyOnHand() <= otherBook->getQtyOnHand())
 		return true;
 	else 
 		return false;
 }
-bool bookType::operator>=(bookType &otherBook) { 
-	if (this->getQtyOnHand() >= otherBook.getQtyOnHand())
+bool bookType::operator>=(bookType *otherBook) { 
+	if (this->getQtyOnHand() >= otherBook->getQtyOnHand())
 		return true;
 	else 
 		return false;
 }
-bool bookType::operator==(bookType &otherBook) { 
-	if (this->getQtyOnHand() == otherBook.getQtyOnHand())
+bool bookType::operator==(bookType *otherBook) { 
+	if (this->getQtyOnHand() == otherBook->getQtyOnHand())
 		return true;
 	else 
 		return false;
 }
-bool bookType::operator!=(bookType &otherBook) { 
-	if (this->getQtyOnHand() != otherBook.getQtyOnHand())
+bool bookType::operator!=(bookType *otherBook) { 
+	if (this->getQtyOnHand() != otherBook->getQtyOnHand())
 		return true;
 	else 
 		return false;
