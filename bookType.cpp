@@ -6,8 +6,10 @@ int bookType::bookCount = 0;
 
 //Overloaders
 bool bookType::operator<(bookType &otherBook) { 
-	if (this->getQtyOnHand() < otherBook.getQtyOnHand())
+	if (thisBook->getQtyOnHand() < otherBook.getQtyOnHand()) {
+		cout << "TEST" << endl;
 		return true;
+	}
 	else 
 		return false;
 }

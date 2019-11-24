@@ -1,6 +1,35 @@
 #include "serendipity.h"
 #include "bookType.h"
 
+
+void sort(bookType *book[], int length) {
+	int index;
+	int smallestIndex;
+	int location;
+	bookType *temp;
+
+	int l = length;
+	
+	for (index = 0; index < length - 1; index++){
+		//Step a
+		smallestIndex = index;
+		
+		for (location = index + 1; location < length; location++){
+			cout << "if " << book[location]->getTitle() << " has less than " << book[smallestIndex]->getTitle() << endl;
+			if (book[location] < book[smallestIndex]) {
+				cout << book[smallestIndex]->getTitle() << ":" << book[smallestIndex]->getQtyOnHand() << " has smaller qty than " << book[location]->getTitle() << ":" << book[location]->getQtyOnHand() << endl;
+				smallestIndex = location;
+			}
+		}
+		//Step b
+		cout << "Swapping " << book[smallestIndex]->getTitle() << " and " << book[index]->getTitle() << endl;
+		temp = book[smallestIndex];
+		book[smallestIndex] = book[index];
+		book[index] = temp;
+	}
+}
+
+/*
 void sort(bookType *book[], int x) {
 	bookType temp;
 	int i, j, index;  
@@ -20,19 +49,24 @@ void sort(bookType *book[], int x) {
 					index = j;  
 				}
 			} else if (x == 2) { // SORT BY AGE
-				//STORED AS MONTH
 				
 				string aDate = book[j]->getDateAdded();
 				int aMonth = stoi(aDate.substr(0, 1));
 				int aDay = stoi(aDate.substr(3, 4));
 				int aYear = stoi(aDate.substr(6, 9));
+				
+
 				string bDate = book[i]->getDateAdded();
 				int bMonth = stoi(bDate.substr(0, 1));
 				int bDay = stoi(bDate.substr(3, 4));
 				int bYear = stoi(bDate.substr(6, 9));
-				if (bYear > aYear) {
-					if (bMonth > aMonth) {
-						if (bDay > aDay) {
+				
+				cout << "CHECKING IF " << bYear << " < " << aYear << endl;
+				if (bYear >= aYear) {
+					cout << "CHECKING IF " << bMonth << " < " << aMonth << endl;
+					if (bMonth >= aMonth) {
+						cout << "CHECKING IF " << bDay << " < " << aDay << endl;
+						if (bDay >= aDay) {
 							index = j;  
 						}
 					}
@@ -54,3 +88,5 @@ void sort(bookType *book[], int x) {
 		}
     } 
 }
+*/
+

@@ -52,11 +52,11 @@ class bookType {
 		int getBookCount();
 		
 		//Overloaders
-		bool operator<(bookType &otherBook);
-		bool operator<=(bookType &otherBook);
-		bool operator>=(bookType &otherBook);
-		bool operator==(bookType &otherBook);
-		bool operator!=(bookType &otherBook);
+		bool operator<(bookType &);
+		bool operator<=(bookType &);
+		bool operator>=(bookType &);
+		bool operator==(bookType &);
+		bool operator!=(bookType &);
 		
 		//Functs
 		bool equals(bookType *);

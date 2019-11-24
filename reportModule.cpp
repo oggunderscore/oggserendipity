@@ -259,7 +259,9 @@ void repQty(bookType *book[]) {
 	int page = 1, maxPages;
 	
 	//Call Sort
-	sort(book, 0);
+	//sort(book, 0);
+	
+	sort(book, book[0]->getBookCount());
 	
 	if (book[0]->getBookCount() >= 10) {
 		maxPages = (book[0]->getBookCount()+9) / 10;
@@ -340,7 +342,7 @@ void repCost(bookType *book[]) {
 	int page = 1, maxPages;
 	
 	//Call Sort
-	sort(book, 1); //!!! CHANGE THIS
+	sort(book, 1);
 	
 	if (book[0]->getBookCount() >= 10) {
 		maxPages = (book[0]->getBookCount()+9) / 10;
