@@ -40,9 +40,6 @@ void repListing(bookType *book[]) {
 	} else {
 		maxPages = 1;
 	}
-	cout << "###################################################################################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
-	cout << endl;
-	pause();
 	
 	
 	
@@ -108,8 +105,6 @@ void repWholesale(bookType *book[]) {
 	} else {
 		maxPages = 1;
 	}
-	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
-	pause();
 	
 	double totalWholesaleValue = 0;
 	
@@ -183,8 +178,6 @@ void repRetail(bookType *book[]) {
 	} else {
 		maxPages = 1;
 	}
-	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
-	pause();
 	
 	
 	while (exitRetail != true) {
@@ -270,9 +263,6 @@ void repQty(bookType *book[]) {
 		maxPages = 1;
 	}
 	
-	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
-	pause();
-	
 	while (exitQty != true) {
 		int numOnPage = 0;
 		bool skip = false;
@@ -354,8 +344,6 @@ void repCost(bookType *book[]) {
 		maxPages = 1;
 	}
 	
-	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
-	pause();
 	
 	while (exitCost != true) {
 		int numOnPage = 0;
@@ -437,8 +425,6 @@ void repAge(bookType *book[]) {
 		maxPages = 1;
 	}
 	
-	cout << "################################################################################################\n#\n#\t\t\tPLEASE RESIZE YOUR BOX TO BE THE SIZE DESIGNATED BY THE BARS.\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#";
-	pause();
 	
 	while (exitAge != true) {
 		int numOnPage = 0;
