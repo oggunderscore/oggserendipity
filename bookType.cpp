@@ -23,84 +23,49 @@ bool bookType::operator<(bookType &otherBook) {
 		else 
 			return false;
 	} else if (sortType == 2) {
-		
+				
 		string date = this->getDateAdded();
 		string month;
 		string day;
 		string year;
-		string::size_type size;
 	
 		month = date.substr(0, 2);
-		day = date.substr(2 , 2);
-		year = date.substr(5, 4);
+		day = date.substr(3, 2);
+		year = date.substr(6, 4);
 	
-		int monthInt = stoi(month, &size);
-		int dayInt = stoi(day, &size);
-		int yearInt = stoi(year, &size);
-	
+		int monthInt = stoi(month);
+		int dayInt = stoi(day);
+		int yearInt = stoi(year);
+			
 		string otherDate = otherBook.getDateAdded();
+		
 		month = otherDate.substr(0, 2);
-		day = otherDate.substr(2 , 2);
-		year = otherDate.substr(5, 4);
+		day = otherDate.substr(3, 2);
+		year = otherDate.substr(6, 4);
 
-		int otherMonthInt = stoi(month, &size);
-		int otherDayInt = stoi(day, &size);
-		int otherYearInt = stoi(year, &size);
-	
-		if (yearInt <= otherYearInt) {
-			if (monthInt <= otherMonthInt) {
-				if (dayInt <= otherDayInt) {
-					return true;
-					cout << monthInt << " " << dayInt << " " << yearInt << " "<< endl;
-					cout << otherMonthInt << " " << otherDayInt << " " << otherYearInt << " "<< endl;
-				} else {
-					return false;
-					cout << otherMonthInt << " " << otherDayInt << " " << otherYearInt << " "<< endl;
-					cout << monthInt << " " << dayInt << " " << yearInt << " "<< endl;
-				}
-			} else {
-			return false;
-			cout << otherMonthInt << " " << otherDayInt << " " << otherYearInt << " "<< endl;
-			cout << monthInt << " " << dayInt << " " << yearInt << " "<< endl;
-			}
-		} else {
-			return false;
-			cout << otherMonthInt << " " << otherDayInt << " " << otherYearInt << " "<< endl;
-			cout << monthInt << " " << dayInt << " " << yearInt << " "<< endl;
-		}
+		int otherMonthInt = stoi(month);
+		int otherDayInt = stoi(day);
+		int otherYearInt = stoi(year);
 		
+		bool result = false;
 		
-		
-		/*
-		string aDate = this->getDateAdded();
-		int aMonth = stoi(aDate.substr(0, 1));
-		int aDay = stoi(aDate.substr(3, 4));
-		int aYear = stoi(aDate.substr(6, 9));
-	
-		string bDate = otherBook.getDateAdded();
-		int bMonth = stoi(bDate.substr(0, 1));
-		int bDay = stoi(bDate.substr(3, 4));
-		int bYear = stoi(bDate.substr(6, 9));
-		
-		cout << "CHECKING IF " << bYear << " < " << aYear << endl;
-		if (aYear < bYear) {
-			cout << "CHECKING IF " << bMonth << " < " << aMonth << endl;
-			if (aMonth < bMonth) {
-				cout << "CHECKING IF " << bDay << " < " << aDay << endl;
-				if (aDay < bDay) {
-					return true;
-				} else {
-					return false;
-				}
-				return true;
-			} else {
-				return false;
-			}				
-			return true;
-		} else {
-			return false;
-		}
-		*/
+		int input = yearInt;
+        int output = otherYearInt;
+
+        if (input == output) {
+            input = monthInt;
+            output = otherMonthInt;
+            if (input == output) {
+                input = dayInt;
+                output = otherDayInt;
+                result = !(input < output);
+            } else {
+				result = !(input < output);
+            }
+        } else {
+			result = !(input < output);
+        }
+	return result;
 	}
 }
 bool bookType::operator<=(bookType *otherBook) { 

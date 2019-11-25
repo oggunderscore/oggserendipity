@@ -68,6 +68,7 @@ void repListing(bookType *book[]) {
 			}
 		}
 
+
 		cout << "\tPress UP_ARROW to go up a page. Press DOWN_ARROW to go down a page. Press ESC to quit. F5 to go-to." << endl;
 
 		bool keyPressed = false;
@@ -445,7 +446,7 @@ void repAge(bookType *book[]) {
 		clears();
 		cout << "\t\t----------- Serendipity BookSellers Report Listing -----------\n" << endl;
 		cout << "\tDate: " << getDate() << "\tPAGE: " << page << " of " << maxPages << "\t\tDatabase Info (Books / Max): " << book[0]->getBookCount() << "/" << DBSIZE << "\n" << endl;
-		cout << "Title                                             " << " " << "ISBN      " << " " << "  \tWholesale" << endl;
+		cout << "Title                                             " << " " << "ISBN      " << " " << "Author              " << " " << "Publisher           " << " " << "Date Added          " << " " << "  QTY" << " " << "         Wholesale " << " " << "       Retail    " << endl;
 		cout << "----------------------------------------------------------------------------------------------" << endl;
 		
 		
