@@ -16,7 +16,7 @@ void sort(bookType *book[], int length) {
 		
 		for (location = index + 1; location < length; location++){
 			cout << "if " << book[location]->getTitle() << " is more than " << book[largestIndex]->getTitle() << endl;
-			if (*book[location] > *book[largestIndex]) {
+			if (*book[largestIndex] < *book[location]) {
 				cout << book[location]->getTitle() << ":" << book[location]->getQtyOnHand() << " > " << book[largestIndex]->getTitle() << ":" << book[largestIndex]->getQtyOnHand() << endl;
 				largestIndex = location;
 			}

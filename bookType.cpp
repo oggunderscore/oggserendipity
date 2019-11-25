@@ -4,22 +4,55 @@
 
 int bookType::bookCount = 0;
 
+int bookType::sortType = 0;
+
+void bookType::setSortType(int x) {
+	sortType = x;
+}
+
 //Overloaders
 bool bookType::operator<(bookType &otherBook) { 
-	if (this->getQtyOnHand() < otherBook.getQtyOnHand()) {
-		cout << "TEST" << endl;
-		return true;
+	if (sortType == 0) {
+		if (this->getQtyOnHand() < otherBook.getQtyOnHand())
+			return true;
+		else 
+			return false;
+	} else if (sortType == 1) {
+		if (this->getWholesale() < otherBook.getWholesale())
+			return true;
+		else 
+			return false;
+	} else if (sortType == 2) {
+		
+		string aDate = this->getDateAdded();
+		int aMonth = stoi(aDate.substr(0, 1));
+		int aDay = stoi(aDate.substr(3, 4));
+		int aYear = stoi(aDate.substr(6, 9));
+	
+		string bDate = otherBook.getDateAdded();
+		int bMonth = stoi(bDate.substr(0, 1));
+		int bDay = stoi(bDate.substr(3, 4));
+		int bYear = stoi(bDate.substr(6, 9));
+		
+		cout << "CHECKING IF " << bYear << " < " << aYear << endl;
+		if (aYear < bYear) {
+			cout << "CHECKING IF " << bMonth << " < " << aMonth << endl;
+			if (aMonth < bMonth) {
+				cout << "CHECKING IF " << bDay << " < " << aDay << endl;
+				if (aDay < bDay) {
+					return true;
+				} else {
+					return false;
+				}
+				return true;
+			} else {
+				return false;
+			}				
+			return true;
+		} else {
+			return false;
+		}
 	}
-	else 
-		return false;
-}
-bool bookType::operator>(bookType &otherBook) { 
-	if (this->getQtyOnHand() > otherBook.getQtyOnHand()) {
-		cout << "TEST" << endl;
-		return true;
-	}
-	else 
-		return false;
 }
 bool bookType::operator<=(bookType *otherBook) { 
 	if (this->getQtyOnHand() <= otherBook->getQtyOnHand())

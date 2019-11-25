@@ -8,6 +8,7 @@ class bookType {
 		string title, isbn, author, publisher, dateAdded;
 		int qtyOnHand;
 		static int bookCount;
+		static int sortType;
 		double wholesale, retail;
 	public: 
 	
@@ -37,6 +38,7 @@ class bookType {
 		void setQtyOnHand(int);
 		void setWholesale(double);
 		void setRetail(double);
+		void setSortType(int);
 		static void incBookCount();
 		static void decBookCount();
 		
@@ -53,7 +55,6 @@ class bookType {
 		
 		//Overloaders
 		bool operator<(bookType &);
-		bool operator>(bookType &);
 		bool operator<=(bookType *);
 		bool operator>=(bookType *);
 		bool operator==(bookType *);

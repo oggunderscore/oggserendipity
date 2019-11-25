@@ -75,7 +75,7 @@ template <class U>
 void selectionSort(U list[], const int length) {
 	
 	int index;
-	int smallestIndex;
+	int largestIndex;
 	int location;
 	U temp;
 
@@ -83,17 +83,17 @@ void selectionSort(U list[], const int length) {
 	
 	for (index = 0; index < length - 1; index++){
 		//Step a
-		smallestIndex = index;
+		largestIndex = index;
 		
 		for (location = index + 1; location < length; location++){
-			if (list[location] > list[smallestIndex])
-				smallestIndex = location;
-			cout << smallestIndex << " has smaller qty than " << location << endl;
+			
+			if (*list[largestIndex] < *list[location])
+				largestIndex = location;
 		}
 		//Step b
 
-		temp = list[smallestIndex];
-		list[smallestIndex] = list[index];
+		temp = list[largestIndex];
+		list[largestIndex] = list[index];
 		list[index] = temp;
 	}
 }
